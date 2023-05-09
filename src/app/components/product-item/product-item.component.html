@@ -1,0 +1,24 @@
+<div class="product-container">
+  <a routerLink="/products/{{ product.id }}">
+    <img
+      class="product-image"
+      src="{{ product.url }}"
+      alt="{{ product.name }}"
+    />
+  </a>
+  <p>{{ product.name }}</p>
+  <p>${{ product.price }}</p>
+  <select class="select-input" [(ngModel)]="quantity">
+    <option *ngFor="let option of options" value="{{ option }}">
+      {{ option }}
+    </option>
+  </select>
+  <button
+    type="submit"
+    class="button-primary"
+    color="primary"
+    (click)="addToCart()"
+  >
+    Add to cart
+  </button>
+</div>
