@@ -4,6 +4,7 @@ img {
 }
 
 .form-margin {
+  margin-top: 12px;
   margin-bottom: 12px;
 }
 
@@ -19,11 +20,25 @@ img {
   flex-direction: column;
   align-items: left;
   margin-left: 80px;
+  min-width: 165px;
 }
 
 .number-input {
   width: 80px;
   text-align: center;
+  padding: 6px 12px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.total-amount {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cart-index {
+  display: flex;
+  justify-content: center;
 }
 
 .cart-container {
@@ -31,15 +46,70 @@ img {
   flex-direction: row;
   justify-content: center;
   margin-top: 64px;
+  flex-wrap: wrap;
 }
 
 .cart-panel {
   margin-left: 50px;
   margin-right: 50px;
+  flex: 1;
 }
 
 .empty-cart-message {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 64px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.input {
+  margin-top: 4px;
+  min-width: 350px;
+  max-width: 400px;
+  padding: 6px 12px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+.input:invalid {
+  border: 1px solid red;
+}
+
+.alert {
+  margin-top: 8px;
+  color: red;
+}
+
+.note {
+  color: #aaa;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.btn-primary {
+  min-width: 115px;
+  padding: 6px 12px;
+
+  border: 1px solid white;
+  border-radius: 6px;
+  background-color: dodgerblue;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  cursor: pointer;
+  border: 1px solid blue;
+}
+
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

@@ -5,5 +5,6 @@ export class Cart {
   name: string = '';
   address: string = '';
   cardNumber: string = '';
-  totalAmount?: number;
+  totalAmount: number = 0;
+  isConfirmed: boolean = false;
 }

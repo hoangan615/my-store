@@ -1,8 +1,8 @@
 .product-index {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1024px;
+  justify-content: space-around;
+  max-width: 1280px;
   margin-bottom: 64px;
 }
 

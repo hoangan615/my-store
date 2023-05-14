@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Cart } from '../models/cart';
 import { Product } from '../models/product';
 import { OrderItem } from '../models/orderItem';
@@ -8,7 +8,13 @@ import { OrderItem } from '../models/orderItem';
 })
 export class CartService {
   cart = new Cart();
-  constructor() {}
+  constructor() {
+    this.cart = JSON.parse(localStorage.getItem('cart') || '{}');
+  }
+
+  saveToLocal() {
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
 
   getTotalAmount(): number {
     let totalAmount = 0;
@@ -26,6 +32,7 @@ export class CartService {
   updateCart(cart: Cart): void {
     this.cart = cart;
     this.getTotalAmount();
+    this.saveToLocal();
   }
 
   addProduct(product: Product, quantity: number): void {
@@ -43,11 +50,13 @@ export class CartService {
       this.cart.items.push(orderItem);
     }
     this.getTotalAmount();
+    this.saveToLocal();
   }
 
   removeProduct(productId: number): void {
     this.cart.items = this.cart.items.filter((item) => item.id != productId);
     this.getTotalAmount();
+    this.saveToLocal();
   }
 
   updateProductQuantity(productId: number, quantity: number): void {
@@ -56,14 +65,19 @@ export class CartService {
       prod.quantity = quantity;
     }
     this.getTotalAmount();
+    this.saveToLocal();
   }
 
   checkout(name: string, address: string, cardNumber: string): Cart {
     this.cart.name = name;
     this.cart.address = address;
     this.cart.cardNumber = cardNumber;
+    this.cart.isConfirmed = true;
     const finalCart = this.cart;
-    this.cart = new Cart();
     return finalCart;
+  }
+  clearCart() {
+    this.cart = new Cart();
+    this.saveToLocal();
   }
 }
