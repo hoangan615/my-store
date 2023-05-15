@@ -9,7 +9,10 @@ import { OrderItem } from '../models/orderItem';
 export class CartService {
   cart = new Cart();
   constructor() {
-    this.cart = JSON.parse(localStorage.getItem('cart') || '{}');
+    const json = localStorage.getItem('cart') || '{}';
+    if (json != '{}') {
+      this.cart = JSON.parse(json);
+    }
   }
 
   saveToLocal() {
@@ -53,21 +56,6 @@ export class CartService {
     this.saveToLocal();
   }
 
-  removeProduct(productId: number): void {
-    this.cart.items = this.cart.items.filter((item) => item.id != productId);
-    this.getTotalAmount();
-    this.saveToLocal();
-  }
-
-  updateProductQuantity(productId: number, quantity: number): void {
-    const prod = this.cart.items.find((item) => item.id === productId);
-    if (prod) {
-      prod.quantity = quantity;
-    }
-    this.getTotalAmount();
-    this.saveToLocal();
-  }
-
   checkout(name: string, address: string, cardNumber: string): Cart {
     this.cart.name = name;
     this.cart.address = address;
@@ -76,6 +64,7 @@ export class CartService {
     const finalCart = this.cart;
     return finalCart;
   }
+
   clearCart() {
     this.cart = new Cart();
     this.saveToLocal();

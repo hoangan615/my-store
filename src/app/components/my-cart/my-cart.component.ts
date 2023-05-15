@@ -13,6 +13,9 @@ export class MyCartComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
   myCart: Cart = new Cart();
+  cusName: string = '';
+  cusAddress: string = '';
+  creditCardNumber: string = '';
 
   constructor(
     private router: Router,
@@ -30,8 +33,6 @@ export class MyCartComponent implements OnInit {
   }
 
   get f() {
-    console.log(this.form.controls);
-
     return this.form.controls;
   }
 
@@ -49,9 +50,9 @@ export class MyCartComponent implements OnInit {
 
   submit() {
     this.cartService.checkout(
-      this.myCart.name,
-      this.myCart.address,
-      this.myCart.cardNumber
+      this.cusName,
+      this.cusAddress,
+      this.creditCardNumber
     );
     this.router.navigate(['confirmation']);
   }

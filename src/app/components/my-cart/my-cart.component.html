@@ -35,7 +35,7 @@
           formControlName="name"
           type="text"
           class="input"
-          [(ngModel)]="myCart.name"
+          [(ngModel)]="cusName"
           placeholder="(minimum 3 characters)"
         />
         <div *ngIf="f['name'].touched && f['name'].invalid" class="alert">
@@ -52,7 +52,7 @@
           formControlName="address"
           type="text"
           class="input"
-          [(ngModel)]="myCart.address"
+          [(ngModel)]="cusAddress"
           placeholder="(minimum 6 characters)"
         />
         <div *ngIf="f['address'].touched && f['address'].invalid" class="alert">
@@ -71,7 +71,7 @@
           formControlName="cardNumber"
           type="text"
           class="input"
-          [(ngModel)]="myCart.cardNumber"
+          [(ngModel)]="creditCardNumber"
           placeholder="(16-digit number)"
         />
         <div

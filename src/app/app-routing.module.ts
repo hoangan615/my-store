@@ -26,6 +26,7 @@ const routes: Routes = [
     path: 'my-cart',
     component: MyCartComponent,
   },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { HeaderComponent } from './layout/header/header.component';
 import { MyCartComponent } from './components/my-cart/my-cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     MyCartComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
